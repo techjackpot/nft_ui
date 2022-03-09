@@ -1,0 +1,19 @@
+.wallet-provider {
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+
+  &:hover {
+    background: lightgray;
+  }
+  &.selected {
+    background: lightgray;
+  }
+}
+.wallet-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 20px;
+}
