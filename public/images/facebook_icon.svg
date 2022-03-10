@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="41px" height="41px" viewBox="0 0 41 41" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <desc>Created with Lunacy</desc>
+  <g id="Group-9" transform="translate(0.4444427 0.4443359)">
+    <path d="M20 40C31.0457 40 40 31.0457 40 20C40 8.9543 31.0457 0 20 0C8.9543 0 0 8.9543 0 20C0 31.0457 8.9543 40 20 40Z" id="Oval" fill="#425EAC" stroke="none" />
+    <path d="M11 3.32L9.00626 3.32125C7.44277 3.32125 7.13961 4.0225 7.13961 5.05125L7.13961 7.32125L10.8689 7.32125L10.3831 10.8775L7.13961 10.8775L7.13961 20L3.25141 20L3.25141 10.8775L0 10.8775L0 7.32125L3.25141 7.32125L3.25141 4.7C3.25141 1.65625 5.22 0 8.09412 0C9.47093 0 10.6545 0.09625 11 0.14L11 3.32Z" transform="translate(14 10)" id="Path" fill="#FFFFFF" stroke="none" />
+  </g>
+</svg>

@@ -1,15 +1,31 @@
-import Container from 'react-bootstrap/Container';
-import MintButton from "./components/MintButton/MintButton";
+import { Web3ReactProvider } from '@web3-react/core';
+import { Web3Provider } from '@ethersproject/providers';
+
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+import MintContainer from "./components/MintContainer";
+
+function getLibrary(provider, connector) {
+  return new Web3Provider(provider) // this will vary according to whether you use e.g. ethers or web3.js
+}
 
 function App() {
   return (
-    <div className="App">
-        <Container className="min-vh-100">
-            <div className="min-vh-100 d-flex flex-column justify-content-center align-items-center">
-                <MintButton />
-            </div>
-        </Container>
-    </div>
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <MintContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </Web3ReactProvider>
   );
 }
 
