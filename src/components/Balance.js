@@ -1,15 +1,11 @@
 import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 
-export default function() {
+const Balance = () => {
   
   const context = useWeb3React()
   const { library } = context;
-
-  const provider = new ethers.providers.Web3Provider(library.provider);
-  const signer = provider.getSigner();
-
 
   const [balance, setBalance] = useState(0);
   // Using React ref here to prevent component re-rendering when changing
@@ -17,8 +13,10 @@ export default function() {
   const prevBalanceRef = useRef(0);
 
   const fetchBalance = useCallback(async () => {
+    const provider = new ethers.providers.Web3Provider(library.provider);
+    const signer = provider.getSigner();
     const address = await signer.getAddress();
-    // console.log(address);
+    // console.log('get balance - ', address);
 
     const rawBalance = await provider.getBalance(address);
     // Format ETH balance and parse it to JS number
@@ -30,13 +28,15 @@ export default function() {
       prevBalanceRef.current = value;
       setBalance(value);
     }
-  }, []);
+  }, [library]);
 
   // useEffect(() => {
   //   fetchBalance();
   // }, [fetchBalance]);
 
   useEffect(() => {
+    const provider = new ethers.providers.Web3Provider(library.provider);
+
     // Fetch user balance on each block
     provider.on('block', fetchBalance);
 
@@ -45,7 +45,9 @@ export default function() {
     return () => {
       provider.off('block', fetchBalance);
     };
-  }, [fetchBalance]);
+  }, [fetchBalance, library]);
 
   return balance;
 }
+
+export default Balance;

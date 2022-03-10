@@ -6,13 +6,9 @@ import MintNFT from './MintNFT';
 import { useEagerConnect, useInactiveListener } from '../hooks';
 import React, { useState, useEffect } from 'react';
 
-
-
-export default function() {
+const MintContainer = () => {
   const context = useWeb3React()
-  const { connector, active, account, error, activate, deactivate } = context;
-
-  const [errors, setErrors] = useState([]);
+  const { connector, account, error } = context;
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState()
@@ -27,10 +23,9 @@ export default function() {
   // handle logic to connect in reaction to certain events on the injected ethereum provider, if it exists
   useInactiveListener(!triedEager || !!activatingConnector);
 
-
   useEffect(() => {
     if (error) {
-      console.log(error);
+      // console.log(error);
       toast.error(error.message);
     }
   }, [error])
@@ -54,3 +49,5 @@ export default function() {
     </ThemeProvider>
   );
 }
+
+export default MintContainer;

@@ -12,7 +12,7 @@ const CONNECTED_TEXT = 'Disconnect';
 export default function OnboardingButton(props) {
   const context = useWeb3React()
 
-  const { connector, active, account, error, activate, deactivate, library } = context;
+  const { connector, active, account, activate, deactivate } = context;
 
   const [buttonText, setButtonText] = React.useState(ONBOARD_TEXT);
   const [isDisabled, setDisabled] = React.useState(false);
