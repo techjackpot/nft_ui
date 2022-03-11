@@ -1,14 +1,12 @@
-import { ThemeProvider, Container, Row, Col } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { useWeb3React } from '@web3-react/core';
-import OnboardinButton from './OnboardinButton';
 import MintNFT from './MintNFT';
-import { useEagerConnect, useInactiveListener } from '../hooks';
+import { useEagerConnect, useInactiveListener } from '../../hooks';
 import React, { useState, useEffect } from 'react';
+import OnboardingButton from './OnboardinButton';
 
-const MintContainer = () => {
-  const context = useWeb3React()
-  const { connector, account, error } = context;
+export default function MintContainer() {
+  const { connector, account, error } = useWeb3React();
 
   // handle logic to recognize the connector currently being activated
   const [activatingConnector, setActivatingConnector] = useState()
@@ -31,23 +29,9 @@ const MintContainer = () => {
   }, [error])
 
   return (
-    <ThemeProvider
-      breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
-    >
-      <Container className="AppContainer">
-        <Row>
-          <Col>
-            <OnboardinButton />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            { account && <MintNFT /> }
-          </Col>
-        </Row>
-      </Container>
-    </ThemeProvider>
+    <div className="mint-btn">
+      { account && <MintNFT /> }
+      { !account && <OnboardingButton /> }
+    </div>
   );
 }
-
-export default MintContainer;

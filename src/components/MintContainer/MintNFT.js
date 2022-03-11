@@ -1,20 +1,19 @@
 import { useWeb3React } from '@web3-react/core';
 import React, { useState, useEffect } from 'react';
-import { InputGroup, Form, Button, Spinner } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { ethers } from 'ethers';
-import Balance from './Balance';
-import ContractABI from '../abis/rinkeby.json';
-import { CONTRACT_ADDRESS } from '../constants/addresses';
+import Balance from '../Balance';
+import ContractABI from '../../abis/rinkeby.json';
+import { CONTRACT_ADDRESS } from '../../constants/addresses';
 
-const MintNFT = () => {
-  const context = useWeb3React()
-  const { account, library } = context;
+export default function MintNFT() {
+  const { account, library } = useWeb3React();
   
   const balance = Balance();
 
   const [quantity, setQuantity] = useState(1);
-  const [disabled, setDisabled] = useState(balance < 0);
+  const [insufficient, setInsufficient] = useState(balance < 0);
   const [whitelisted, setWhitelisted] = useState(false);
   const [unitPrice, setUnitPrice] = useState(0);
   const [processing, setProcessing] = useState(false);
@@ -34,7 +33,7 @@ const MintNFT = () => {
   }, [account, library]);
 
   useEffect(() => {
-    setDisabled(unitPrice * quantity > balance);
+    setInsufficient(unitPrice * quantity > balance);
   }, [unitPrice, quantity, balance]);
 
   const onQuantityChanged = (value) => {
@@ -75,45 +74,29 @@ const MintNFT = () => {
     <div className="mint-area">
       <p>Choose how many NFT's you'd like to buy. You can buy between 1 and 5 NFT's per mint.</p>
 
-      <div className="mt-3">
-        <span>Your balance: </span>
-        <span>{ balance } ETH</span>
-      </div>
       { whitelisted && (
-        <div className="my-3">
+        <p className="my-3">
           <span>Congratulations! You are whitelisted.</span>
-        </div>
+        </p>
       )}
-      <div className="mt-3">
-        <span>Price per NFT: </span>
-        <span>{ unitPrice } ETH</span>
+      <div className="quantity-input-area">
+        <span>Price per NFT: { unitPrice }ETH</span>
+        <span className="separator">&times;</span>
+        <Form.Control
+          type="number"
+          min={1}
+          max={5}
+          value={quantity}
+          onChange={(e) => onQuantityChanged(e.target.value)}
+        />
+        <span className="separator">=</span>
+        <span className={`${insufficient ? 'insufficient' : ''}`}>{ unitPrice * quantity }ETH</span>
       </div>
       <div className="action-area mt-3">
-        <div className="quantity-input-area">
-          <InputGroup>
-            <InputGroup.Text>Quantity</InputGroup.Text>
-            <Form.Control
-              type="number"
-              min={1}
-              max={5}
-              value={quantity}
-              onChange={(e) => onQuantityChanged(e.target.value)}
-            />
-          </InputGroup>
-            <Form.Range
-              min={1}
-              max={5}
-              step={1}
-              value={quantity}
-              onChange={(e) => onQuantityChanged(e.target.value)}
-            />
-        </div>
         <div className="action-button">
-          <Button disabled={disabled} onClick={confirmMint}>{ !processing ? 'Confirm' : <Spinner size="sm" animation="border" /> }</Button>
+          <Button disabled={insufficient || processing} onClick={confirmMint}>{ !processing ? 'Buy NFT' : 'Confirming...' }</Button>
         </div>
       </div>
     </div>
   )
 }
-
-export default MintNFT;

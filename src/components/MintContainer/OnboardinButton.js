@@ -3,7 +3,7 @@ import MetaMaskOnboarding from '@metamask/onboarding';
 import React from 'react';
 import { toast } from 'react-toastify';
 import { Button } from 'react-bootstrap';
-import { injected } from '../connectors';
+import { injected } from '../../connectors';
 
 const ONBOARD_TEXT = 'Click here to install MetaMask!';
 const CONNECT_TEXT = 'Mint NFT';
@@ -51,16 +51,10 @@ export default function OnboardingButton(props) {
       onboarding.current.startOnboarding();
     }
   };
+
   return (
-    <div className="wallet-area">
-      {
-        account && (
-          <div className="wallet-address">
-            <span>{ account }</span>
-          </div>
-        )
-      }
-      <Button variant="primary" disabled={isDisabled} onClick={onClick}>
+    <div className="action-button">
+      <Button disabled={isDisabled} onClick={onClick}>
         {buttonText}
       </Button>
     </div>

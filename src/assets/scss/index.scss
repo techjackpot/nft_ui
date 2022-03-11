@@ -30,16 +30,99 @@ code {
 }
 
 .mint-area {
-  margin-top: 2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  p {
+    font-size: 20px;
+    z-index: 3;
+    font-family: "Sofia Pro", sans-serif;
+    max-width: 585px;
+    font-weight: 500;
+    margin: 0 0 1em;
+  }
   .action-area {
-    display: flex;
   }
   .quantity-input-area {
-    width: 160px;
-    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    span {
+      white-space: nowrap;
+      font-size: 20px;
+      z-index: 3;
+      font-family: "Sofia Pro", sans-serif;
+      max-width: 585px;
+      font-weight: 500;
+    }
+    .separator {
+      margin: 0 6px;
+    }
+    input {
+      width: auto;
+      border: 1px solid #00ddee;
+      box-shadow: 0px 0px 15px #29cad4;
+      font-family: Burbank Big Condensed;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 24px;
+      letter-spacing: 0.75px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #ffffff;
+      padding: 10px 15px;
+      outline: none;
+      background: none;
+      border-radius: 0;
+      text-align: right;
+    }
+    .insufficient {
+      color: red;
+    }
+  }
+}
+.mint-btn {
+  .action-button {
+    .btn {
+      border: 3px solid #00ddee;
+      box-shadow: 0px 0px 15px #29cad4;
+      font-family: Burbank Big Condensed;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 24px;
+      letter-spacing: 0.75px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #ffffff;
+      padding: 10px 15px;
+      outline: none;
+      background: none;
+      border-radius: 0;
+    }
+  }
+}
+
+nav {
+  .nav-toggler {
+    display: flex;
+    align-items: center;
+    .nav-item.dropdown {
+      margin-left: 1rem;
+      .dropdown-menu {
+      }
+      .wallet-info {
+        padding: 2px 8px;
+        font-size: 12px;
+        text-align: center;
+      }
+      .link-disconnect {
+        text-align: center;
+      }
+    }
+  }
+  #wallet-dropdown {
+    border: 1px solid #00ddee;
+    font-size: 12px;
   }
 }

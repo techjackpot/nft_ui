@@ -2,10 +2,8 @@ import { useWeb3React } from '@web3-react/core';
 import { ethers } from 'ethers';
 import { useState, useEffect, useCallback, useRef } from 'react';
 
-const Balance = () => {
-  
-  const context = useWeb3React()
-  const { library } = context;
+export default function Balance() {
+  const { library } = useWeb3React();
 
   const [balance, setBalance] = useState(0);
   // Using React ref here to prevent component re-rendering when changing
@@ -49,5 +47,3 @@ const Balance = () => {
 
   return balance;
 }
-
-export default Balance;
