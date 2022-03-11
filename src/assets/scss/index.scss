@@ -75,8 +75,19 @@ code {
       outline: none;
       background: none;
       border-radius: 0;
-      text-align: right;
+      text-align: center;
     }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+
     .insufficient {
       color: red;
     }
@@ -123,5 +134,14 @@ nav {
   #wallet-dropdown {
     border: 1px solid #00ddee;
     font-size: 12px;
+  }
+}
+
+.transaction-message {
+  font-size: 12px;
+  .link_opensea {
+    &:hover {
+      color: #29cad4;
+    }
   }
 }

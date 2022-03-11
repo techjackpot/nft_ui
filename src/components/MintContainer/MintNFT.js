@@ -59,8 +59,16 @@ export default function MintNFT() {
         value: ethers.utils.parseEther(quantity * unitPrice + '')
       })
       toast.promise(mintResponse.wait, {
-        pending: 'Waiting ...',
-        success: 'Successfully minted',
+        pending: {
+          render() {
+            return <p className="transaction-message">Contacting the smart contract on the Ethereum network in order to mint your NFT's. This could take a couple of minutes. Please hang tight!</p>;
+          }
+        },
+        success: {
+          render() {
+            return <p className="transaction-message">You have successfully minted your ZenSportsia NFT's! Please go to <a className="link_opensea" href="https://opensea.io/" target="_blank" rel="noreferrer">Opensea.io</a> to view them.</p>;
+          }
+        },
         error: 'Transaction failed'
       })
     } catch(e) {
