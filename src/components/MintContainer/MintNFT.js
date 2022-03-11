@@ -62,7 +62,8 @@ export default function MintNFT() {
         pending: {
           render() {
             return <p className="transaction-message">Contacting the smart contract on the Ethereum network in order to mint your NFT's. This could take a couple of minutes. Please hang tight!</p>;
-          }
+          },
+          position: toast.POSITION.TOP_CENTER
         },
         success: {
           render() {
