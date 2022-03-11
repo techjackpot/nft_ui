@@ -5,8 +5,8 @@ import { toast } from 'react-toastify';
 import { Button } from 'react-bootstrap';
 import { injected } from '../../connectors';
 
-const ONBOARD_TEXT = 'Click here to install MetaMask!';
-const CONNECT_TEXT = 'Mint NFT';
+const ONBOARD_TEXT = 'Mint NFT\'s'; //'Click here to install MetaMask!';
+const CONNECT_TEXT = 'Mint NFT\'s';
 const CONNECTED_TEXT = 'Disconnect';
 
 export default function OnboardingButton(props) {

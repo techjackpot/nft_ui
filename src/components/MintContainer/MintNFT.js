@@ -94,7 +94,7 @@ export default function MintNFT() {
       </div>
       <div className="action-area mt-3">
         <div className="action-button">
-          <Button disabled={insufficient || processing} onClick={confirmMint}>{ !processing ? 'Buy NFT' : 'Confirming...' }</Button>
+          <Button disabled={insufficient || processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
         </div>
       </div>
     </div>
