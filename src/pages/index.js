@@ -58,7 +58,7 @@ export default function IndexPage() {
 
               <li><a href="#Community" class="menu-link">Community</a></li>
 
-              <li><a href="#Benefits" class="menu-link">NFT Benefits</a></li>
+              <li><a href="#Benefits" class="menu-link">Benefits</a></li>
 
               <li><a href="#Team" class="menu-link">Team</a></li>
               <li><a href="#Roadmap" class="menu-link">Roadmap</a></li>
@@ -66,6 +66,14 @@ export default function IndexPage() {
               <li><a href="#Minting" class="menu-link">Minting</a></li>
 
               <li><a href="#FAQs" class="menu-link">FAQ's</a></li>
+              <li>
+                <a
+                  href="https://zensports.docsend.com/view/vbkktmajad97jjid"
+                  target="_blank"
+                  class="menu-link"
+                  >Whitepaper</a
+                >
+              </li>
             </ul>
           </div>
           <HeaderInfo />
@@ -148,37 +156,63 @@ export default function IndexPage() {
           class="bgSoccer"
           loading="lazy"
         />
-        <div id="Characters"></div>
-        <div class="col-lx-10 col-md-12">
-          <div class="storyHead sample">
-            <h4>Sample ZenSportsian NFT's</h4>
-          </div>
-          <div class="row characters">
-            <div class="col-md-4 d-flex align-items-stretch">
-              {/*<!--<div class="icon-box">-->*/}
-              <img
-                src="images/NFT_character_1-1.jpg"
-                alt="NFT Character 1"
-                class="img-nft"
-              />
+        <div id="Characters">
+          <div class="col-lx-10 col-md-12">
+            <div class="storyHead sample">
+              <h4>Sample ZenSportsian NFT's</h4>
             </div>
+            <div class="row characters">
+              <div class="col-md-4 d-flex align-items-stretch">
+                {/* <!--<div class="icon-box">--> */}
+                <img
+                  src="images/NFT_character_1-1.jpg"
+                  alt="NFT Character 1"
+                  class="img-nft"
+                />
+              </div>
 
-            <div class="col-md-4 d-flex align-items-stretch">
-              {/*<!--<div class="icon-box">-->*/}
-              <img
-                src="images/NFT_character_2-1.jpg"
-                alt="NFT Character 2"
-                class="img-nft"
-              />
+              <div class="col-md-4 d-flex align-items-stretch">
+                {/* <!--<div class="icon-box">--> */}
+                <img
+                  src="images/NFT_character_2-1.jpg"
+                  alt="NFT Character 2"
+                  class="img-nft"
+                />
+              </div>
+
+              <div class="col-md-4 d-flex align-items-stretch">
+                {/* <!--<div class="icon-box">--> */}
+                <img
+                  src="images/NFT_character_3-1.jpg"
+                  alt="NFT Character 3"
+                  class="img-nft"
+                />
+              </div>
             </div>
+            <div class="row characters">
+              <div class="col-md-4 d-flex align-items-stretch">
+                <img
+                  src="images/NFT_character_4.jpg"
+                  alt="NFT Character 4"
+                  class="img-nft"
+                />
+              </div>
 
-            <div class="col-md-4 d-flex align-items-stretch">
-              {/*<!--<div class="icon-box">-->*/}
-              <img
-                src="images/NFT_character_3-1.jpg"
-                alt="NFT Character 3"
-                class="img-nft"
-              />
+              <div class="col-md-4 d-flex align-items-stretch">
+                <img
+                  src="images/NFT_character_5.jpg"
+                  alt="NFT Character 5"
+                  class="img-nft"
+                />
+              </div>
+
+              <div class="col-md-4 d-flex align-items-stretch">
+                <img
+                  src="images/NFT_character_6.jpg"
+                  alt="NFT Character 6"
+                  class="img-nft"
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -238,9 +272,8 @@ export default function IndexPage() {
                   more locations to come soon).
                 </li>
                 <li>
-                  Earn passive income every time your NFT gets resold — you keep
-                  0.5% of all resales/trading in the ZenSports NFT Marketplace
-                  (launching Q2 2022).
+                  Access to the ZenSportsia online membership portal with
+                  additional sports and gaming perks, discounts, and rewards.
                 </li>
               </ol>
             </div>
@@ -324,12 +357,12 @@ export default function IndexPage() {
             </div>
 
             <div class="col-md-6">
-              {/*<!--<div class="storyHead" id="our_team">
+              {/* <!--<div class="storyHead" id="our_team">
               <p><span>Our team</span></p>
               <h4>Meet the Creators</h4>
-            </div>-->*/}
+            </div>--> */}
 
-              {/*<!-- Slideshow section -->*/}
+              {/* <!-- Slideshow section --> */}
               <div class="carousel">
                 <div class="splide">
                   <div class="splide__track">
@@ -622,10 +655,6 @@ export default function IndexPage() {
                 during the general public sale).
               </li>
 
-              <li>
-                Original minter receives 0.5% on all resales/trading in the
-                ZenSports NFT Marketplace (launching Q2 2022).
-              </li>
               <li>2.5% of resales (trading) go to ZenSports.</li>
               <li>
                 Whitelist minting will begin at

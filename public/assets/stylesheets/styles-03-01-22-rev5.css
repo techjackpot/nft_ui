@@ -150,7 +150,7 @@ header {
 }
 nav {
   display: grid !important;
-  grid-template-columns: auto 61% auto;
+  grid-template-columns: auto 69% auto;
   /*   position: relative;
    width: 93%;
    padding-top: 3.2vh; */
@@ -438,6 +438,10 @@ section {
   max-width: 1440px;
   z-index: 1002;
 }
+#Characters {
+  z-index: 1002;
+  position: relative;
+}
 .sample {
   background-color: rgba(3, 3, 3, 0.25);
   padding: 15px;
@@ -462,8 +466,9 @@ img.bgSoccer {
   position: absolute;
   z-index: 1001;
   left: 0;
-  bottom: 30%;
-  /* width: auto; */
+  /* bottom: 30%;
+   width: auto; */
+  top: 10%;
   width: 25vw;
   max-width: 400px;
 }
