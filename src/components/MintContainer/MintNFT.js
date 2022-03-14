@@ -12,7 +12,7 @@ export default function MintNFT() {
   
   const balance = Balance();
 
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [insufficient, setInsufficient] = useState(balance < 0);
   const [whitelisted, setWhitelisted] = useState(false);
   const [unitPrice, setUnitPrice] = useState(0);
@@ -33,17 +33,20 @@ export default function MintNFT() {
   }, [account, library]);
 
   useEffect(() => {
-    setInsufficient(unitPrice * quantity > balance);
+    setInsufficient(quantity == 0 || unitPrice * quantity > balance);
   }, [unitPrice, quantity, balance]);
 
   const onQuantityChanged = (value) => {
     let newQuantity = value;
-    if (newQuantity < 1) {
-      newQuantity = 1;
-      toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
-    }
-    if (newQuantity > 5) {
-      newQuantity = 5;
+    // if (newQuantity < 1) {
+    //   newQuantity = 1;
+    //   toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
+    // }
+    // if (newQuantity > 5) {
+    //   newQuantity = 5;
+    //   toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
+    // }
+    if (newQuantity == 0) {
       toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
     }
     setQuantity(newQuantity);
@@ -91,6 +94,18 @@ export default function MintNFT() {
       <div className="quantity-input-area">
         <span>Price per NFT: { unitPrice }ETH</span>
         <span className="separator">&times;</span>
+        <Form.Select
+          value={quantity}
+          onChange={(e) => onQuantityChanged(e.target.value)}
+        >
+          <option value="0">&nbsp;</option>
+          <option>5</option>
+          <option>4</option>
+          <option>3</option>
+          <option>2</option>
+          <option>1</option>
+        </Form.Select>
+        {/*
         <Form.Control
           type="number"
           min={1}
@@ -98,6 +113,7 @@ export default function MintNFT() {
           value={quantity}
           onChange={(e) => onQuantityChanged(e.target.value)}
         />
+        */}
         <span className="separator">=</span>
         <span className={`${insufficient ? 'insufficient' : ''}`}>{ unitPrice * quantity }ETH</span>
       </div>
