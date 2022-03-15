@@ -33,7 +33,7 @@ export default function MintNFT() {
   }, [account, library]);
 
   useEffect(() => {
-    setInsufficient(quantity == 0 || unitPrice * quantity > balance);
+    setInsufficient(quantity === 0 || unitPrice * quantity > balance);
   }, [unitPrice, quantity, balance]);
 
   const onQuantityChanged = (value) => {
@@ -54,7 +54,7 @@ export default function MintNFT() {
 
   const confirmMint = async () => {
     if (insufficient) {
-      if (quantity == 0) {
+      if (quantity === 0) {
         toast.error('Please select a quantity of NFT\'s to buy.');
       } else {
         toast.error('Oops, you don\'t have sufficient funds to mint the number of NFT\'s.');

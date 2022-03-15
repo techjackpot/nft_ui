@@ -34,6 +34,7 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 24px;
   p {
     font-size: 20px;
     z-index: 3;
@@ -171,5 +172,11 @@ nav {
     &:hover {
       color: #29cad4;
     }
+  }
+}
+
+header {
+  @media (min-width: 1021px) {
+    min-height: calc(900px + 12%);
   }
 }
