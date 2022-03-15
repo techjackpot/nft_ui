@@ -48,19 +48,4 @@ export default function HeaderInfo(props) {
       { account && <Wallet /> }
     </div>
   );
-  /*
-    <div>
-      {
-        account && (
-          <div className="wallet-address">
-            <span>{ account }</span>
-          </div>
-        )
-      }
-      <Button variant="primary" disabled={isDisabled} onClick={onClick}>
-        {buttonText}
-      </Button>
-    </div>
-  );
-  */
 }

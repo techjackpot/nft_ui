@@ -44,7 +44,8 @@ export default function OnboardingButton(props) {
         deactivate();
       } else {
         activate(injected).then(() => {
-          toast.success('Connected');
+          localStorage.removeItem('disconnectForced');
+          // toast.success('Connected');
         });
       }
     } else {

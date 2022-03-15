@@ -7,6 +7,11 @@ export default function Wallet() {
 
   const balance = Balance();
 
+  const onDeactivate = () => {
+    localStorage.setItem('disconnectForced', '1');
+    deactivate();
+  };
+
   return (
     <NavDropdown title={account.slice(0, 4) + '......' + account.slice(-4)} id="wallet-dropdown">
       <div className="wallet-info">
@@ -14,7 +19,7 @@ export default function Wallet() {
         <div className="wallet-balance">{ balance }ETH</div>
       </div>
       <NavDropdown.Divider />
-      <NavDropdown.Item className="link-disconnect" onClick={deactivate}>Disconnect</NavDropdown.Item>
+      <NavDropdown.Item className="link-disconnect" onClick={onDeactivate}>Disconnect</NavDropdown.Item>
     </NavDropdown>
   );
 }

@@ -180,3 +180,43 @@ header {
     min-height: calc(800px + 12vw);
   }
 }
+
+#quantity-selector {
+  .dropdown-toggle {
+    background: transparent;
+    width: auto;
+    border: 1px solid #00ddee;
+    box-shadow: 0px 0px 15px #29cad4;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    outline: none;
+    border-radius: 0;
+    span {
+      font-family: Burbank Big Condensed;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 24px;
+      letter-spacing: 0.75px;
+      min-width: 24px;
+      display: inline-block;
+    }
+  }
+  .dropdown-menu {
+    min-width: 64px;
+    background: #171839;
+    .dropdown-item {
+      font-family: Burbank Big Condensed;
+      font-style: normal;
+      font-size: 24px;
+      line-height: 24px;
+      letter-spacing: 0.75px;
+      text-align: center;
+      color: #fff;
+      cursor: pointer;
+      &:hover {
+        background: lighten(#171839, 10%);
+      }
+    }
+  }
+}

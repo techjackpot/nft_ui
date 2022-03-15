@@ -1,6 +1,6 @@
 import { useWeb3React } from '@web3-react/core';
 import React, { useState, useEffect } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Dropdown } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { ethers } from 'ethers';
 import Balance from '../Balance';
@@ -17,6 +17,9 @@ export default function MintNFT() {
   const [whitelisted, setWhitelisted] = useState(false);
   const [unitPrice, setUnitPrice] = useState(0);
   const [processing, setProcessing] = useState(false);
+  const [isPresale, setIsPresale] = useState(false);
+  const [isPubsale, setIsPubsale] = useState(false);
+  const [preSaleStartDate, setPreSaleStartDate] = useState(new Date());
 
   useEffect(() => {
     (async () => {
@@ -27,8 +30,17 @@ export default function MintNFT() {
       const is_whitelisted = await contract.connect(signer).whitelists(account);
       setWhitelisted(is_whitelisted);
 
+      const is_presale = await contract.connect(signer).isPresale();
+      setIsPresale(is_presale);
+
+      const is_pubsale = await contract.connect(signer).isPubsale();
+      setIsPubsale(is_pubsale);
+
+      // console.log(is_presale, is_pubsale);
+
       const salePlans = await contract.connect(signer).getSalePlans();
-      setUnitPrice(parseFloat(ethers.utils.formatEther(is_whitelisted ? salePlans.mintPrice1 : salePlans.mintPrice2)));
+      setPreSaleStartDate(new Date(salePlans.startTime.toNumber() * 1000));
+      setUnitPrice(parseFloat(ethers.utils.formatEther(is_whitelisted && is_presale ? salePlans.mintPrice1 : salePlans.mintPrice2)));
     })()
   }, [account, library]);
 
@@ -103,6 +115,20 @@ export default function MintNFT() {
       <div className="quantity-input-area">
         <span>Price per NFT: { unitPrice }ETH</span>
         <span className="separator">&times;</span>
+        <Dropdown id="quantity-selector">
+          <Dropdown.Toggle>
+            <span>{ quantity === 0 ? <>&nbsp;</> : quantity }</span>
+          </Dropdown.Toggle>
+          <Dropdown.Menu>
+            {/* <Dropdown.Item as="div">-</Dropdown.Item> */}
+            <Dropdown.Item as="div" onClick={() => onQuantityChanged(5)}>5</Dropdown.Item>
+            <Dropdown.Item as="div" onClick={() => onQuantityChanged(4)}>4</Dropdown.Item>
+            <Dropdown.Item as="div" onClick={() => onQuantityChanged(3)}>3</Dropdown.Item>
+            <Dropdown.Item as="div" onClick={() => onQuantityChanged(2)}>2</Dropdown.Item>
+            <Dropdown.Item as="div" onClick={() => onQuantityChanged(1)}>1</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        {/*
         <Form.Select
           value={quantity}
           onChange={(e) => onQuantityChanged(e.target.value)}
@@ -114,6 +140,7 @@ export default function MintNFT() {
           <option>2</option>
           <option>1</option>
         </Form.Select>
+        */}
         {/*
         <Form.Control
           type="number"
