@@ -46,13 +46,22 @@ export default function MintNFT() {
     //   newQuantity = 5;
     //   toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
     // }
-    if (newQuantity == 0) {
-      toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
-    }
+    // if (newQuantity == 0) {
+    //   toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
+    // }
     setQuantity(newQuantity);
   };
 
   const confirmMint = async () => {
+    if (insufficient) {
+      if (quantity == 0) {
+        toast.error('Please select a quantity of NFT\'s to buy.');
+      } else {
+        toast.error('Oops, you don\'t have sufficient funds to mint the number of NFT\'s.');
+      }
+      return;
+    }
+
     setProcessing(true);
     try {
       const provider = new ethers.providers.Web3Provider(library.provider);
@@ -119,7 +128,7 @@ export default function MintNFT() {
       </div>
       <div className="action-area mt-3">
         <div className="action-button">
-          <Button disabled={insufficient || processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
+          <Button disabled={processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
         </div>
       </div>
     </div>
