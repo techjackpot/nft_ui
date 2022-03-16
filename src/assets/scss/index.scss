@@ -179,6 +179,9 @@ header {
   @media (min-width: 1021px) {
     min-height: calc(950px + 12vw);
   }
+  .hero-content {
+    min-height: 800px;
+  }
 }
 
 #quantity-selector {
