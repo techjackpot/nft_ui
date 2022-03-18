@@ -38,21 +38,21 @@ export function useInactiveListener(suppress = false) {
     const { ethereum } = window
     if (ethereum && ethereum.on && !active && !error && !suppress) {
       const handleConnect = () => {
-        console.log("Handling 'connect' event")
+        // console.log("Handling 'connect' event")
         activate(injected)
       }
       const handleChainChanged = (chainId) => {
-        console.log("Handling 'chainChanged' event with payload", chainId)
+        // console.log("Handling 'chainChanged' event with payload", chainId)
         activate(injected)
       }
       const handleAccountsChanged = (accounts) => {
-        console.log("Handling 'accountsChanged' event with payload", accounts)
+        // console.log("Handling 'accountsChanged' event with payload", accounts)
         if (accounts.length > 0) {
           activate(injected)
         }
       }
       const handleNetworkChanged = (networkId) => {
-        console.log("Handling 'networkChanged' event with payload", networkId)
+        // console.log("Handling 'networkChanged' event with payload", networkId)
         activate(injected)
       }
 

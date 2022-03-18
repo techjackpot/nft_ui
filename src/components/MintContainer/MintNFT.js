@@ -7,19 +7,31 @@ import Balance from '../Balance';
 import ContractABI from '../../abis/rinkeby.json';
 import { CONTRACT_ADDRESS } from '../../constants/addresses';
 
+const timerIDs = {};
+
 export default function MintNFT() {
   const { account, library } = useWeb3React();
   
   const balance = Balance();
 
+  const [loaded, setLoaded] = useState(false);
+
   const [quantity, setQuantity] = useState(0);
   const [insufficient, setInsufficient] = useState(balance < 0);
-  const [whitelisted, setWhitelisted] = useState(false);
+  const [isWhitelisted, setWhitelisted] = useState(false);
   const [unitPrice, setUnitPrice] = useState(0);
   const [processing, setProcessing] = useState(false);
   const [isPresale, setIsPresale] = useState(false);
   const [isPubsale, setIsPubsale] = useState(false);
-  const [preSaleStartDate, setPreSaleStartDate] = useState(new Date());
+  const [presaleCount, setPresaleCount] = useState(0);
+  const [presaleSoldOut, setPresaleSoldOut] = useState(false);
+  const [pubsaleCount, setPubsaleCount] = useState(0);
+  const [soldOut, setSoldOut] = useState(false);
+  const [presaleStartDate, setPresaleStartDate] = useState(new Date());
+  const [presaleStarted, setPresaleStarted] = useState(false);
+  const [presaleEnded, setPresaleEnded] = useState(false);
+  const [presalePrice, setPresalePrice] = useState(0);
+  const [pubsalePrice, setPubsalePrice] = useState(0);
 
   useEffect(() => {
     (async () => {
@@ -27,41 +39,58 @@ export default function MintNFT() {
       const signer = provider.getSigner();
       const contract = new ethers.Contract(CONTRACT_ADDRESS, ContractABI, provider);
 
-      const is_whitelisted = await contract.connect(signer).whitelists(account);
-      setWhitelisted(is_whitelisted);
-
-      const is_presale = await contract.connect(signer).isPresale();
-      setIsPresale(is_presale);
-
-      const is_pubsale = await contract.connect(signer).isPubsale();
-      setIsPubsale(is_pubsale);
-
-      // console.log(is_presale, is_pubsale);
-
       const salePlans = await contract.connect(signer).getSalePlans();
-      setPreSaleStartDate(new Date(salePlans.startTime.toNumber() * 1000));
-      setUnitPrice(parseFloat(ethers.utils.formatEther(is_whitelisted && is_presale ? salePlans.mintPrice1 : salePlans.mintPrice2)));
+
+      const isWhitelisted = await contract.connect(signer).whitelists(account);
+      setWhitelisted(isWhitelisted);
+
+      const isPresale = await contract.connect(signer).isPresale();
+      setIsPresale(isPresale);
+
+      const isPubsale = await contract.connect(signer).isPubsale();
+      setIsPubsale(isPubsale);
+
+      const presaleCount = await contract.connect(signer).presaleCount();
+      setPresaleCount(presaleCount.toNumber());
+
+      const pubsaleCount = await contract.connect(signer).pubsaleCount();
+      setPubsaleCount(pubsaleCount.toNumber());
+
+      const presaleStartDate = new Date(salePlans.startTime.toNumber() * 1000);
+      setPresaleStartDate(presaleStartDate);
+      setPresalePrice(parseFloat(ethers.utils.formatEther(salePlans.mintPrice1)));
+      setPubsalePrice(parseFloat(ethers.utils.formatEther(salePlans.mintPrice2)));
+
+      setLoaded(true);
     })()
   }, [account, library]);
+
+  useEffect(() => {
+    setPresaleStarted(new Date() >= presaleStartDate);
+  }, [presaleStartDate]);
+
+  useEffect(() => {
+    setPresaleSoldOut(presaleCount >= 5000);
+  }, [presaleCount]);
+
+  useEffect(() => {
+    setSoldOut(presaleCount + pubsaleCount >= 9800);
+  }, [presaleCount, pubsaleCount]);
+
+  useEffect(() => {
+    setPresaleEnded(!isPresale || presaleSoldOut);
+  }, [isPresale, presaleSoldOut])
+
+  useEffect(() => {
+    setUnitPrice(isWhitelisted && !presaleEnded ? presalePrice : pubsalePrice);
+  }, [isWhitelisted, presaleEnded, presalePrice, pubsalePrice]);
 
   useEffect(() => {
     setInsufficient(quantity === 0 || unitPrice * quantity > balance);
   }, [unitPrice, quantity, balance]);
 
   const onQuantityChanged = (value) => {
-    let newQuantity = value;
-    // if (newQuantity < 1) {
-    //   newQuantity = 1;
-    //   toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
-    // }
-    // if (newQuantity > 5) {
-    //   newQuantity = 5;
-    //   toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
-    // }
-    // if (newQuantity == 0) {
-    //   toast.error('Oops! You must buy between 1 and 5 NFTs. Try again.');
-    // }
-    setQuantity(newQuantity);
+    setQuantity(value);
   };
 
   const confirmMint = async () => {
@@ -103,61 +132,124 @@ export default function MintNFT() {
     }
   };
 
-  return (
-    <div className="mint-area">
-      <p>Choose how many NFT's you'd like to buy. You can buy between 1 and 5 NFT's per mint.</p>
-
-      { whitelisted && (
-        <p className="my-3">
-          <span>Congratulations! You are whitelisted.</span>
-        </p>
-      )}
-      <div className="quantity-input-area">
-        <span>Price per NFT: { unitPrice }ETH</span>
-        <span className="separator">&times;</span>
-        <Dropdown id="quantity-selector">
-          <Dropdown.Toggle>
-            <span>{ quantity === 0 ? <>&nbsp;</> : quantity }</span>
-          </Dropdown.Toggle>
-          <Dropdown.Menu>
-            {/* <Dropdown.Item as="div">-</Dropdown.Item> */}
-            <Dropdown.Item as="div" onClick={() => onQuantityChanged(5)}>5</Dropdown.Item>
-            <Dropdown.Item as="div" onClick={() => onQuantityChanged(4)}>4</Dropdown.Item>
-            <Dropdown.Item as="div" onClick={() => onQuantityChanged(3)}>3</Dropdown.Item>
-            <Dropdown.Item as="div" onClick={() => onQuantityChanged(2)}>2</Dropdown.Item>
-            <Dropdown.Item as="div" onClick={() => onQuantityChanged(1)}>1</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        {/*
-        <Form.Select
-          value={quantity}
-          onChange={(e) => onQuantityChanged(e.target.value)}
-        >
-          <option value="0">&nbsp;</option>
-          <option>5</option>
-          <option>4</option>
-          <option>3</option>
-          <option>2</option>
-          <option>1</option>
-        </Form.Select>
-        */}
-        {/*
-        <Form.Control
-          type="number"
-          min={1}
-          max={5}
-          value={quantity}
-          onChange={(e) => onQuantityChanged(e.target.value)}
-        />
-        */}
-        <span className="separator">=</span>
-        <span className={`${insufficient ? 'insufficient' : ''}`}>{ unitPrice * quantity }ETH</span>
-      </div>
-      <div className="action-area mt-3">
-        <div className="action-button">
-          <Button disabled={processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
+  if (!loaded) {
+    return (
+      <div className="mint-area">
+        <div className="action-area mt-3">
+          <div className="action-button">
+            <Button disabled>Loading...</Button>
+          </div>
         </div>
       </div>
+    );
+  }
+
+  if (!presaleStarted) {
+    return (
+      <div className="mint-area">
+        <div className="action-area mt-3">
+          <div className="action-button">
+            <Button disabled>Mint NFT's</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (soldOut) {
+    return (
+      <div className="mint-area">
+        <p className="my-3">The Public mint has been sold out. Feel free to check <u className="link" onClick={() => window.open('https://opensea.io')}>OpenSea</u> if you're interested in buying any NFT's in the public markets.</p>
+        <div className="action-area mt-3">
+          <div className="action-button">
+            <Button disabled>Mint NFT's</Button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isWhitelisted && !isPubsale) {
+    return (
+      <div className="mint-area">
+        <div className="action-area mt-3">
+          <div className="action-button">
+            <Button disabled>Mint NFT's</Button>
+          </div>
+        </div>
+        <p className="mt-3">
+          <a
+            href="https://zensports.com/blog/zensportsia-nft-drop-how-to-enter-the-whitelist/"
+            target="_blank"
+            class="sub-text"
+          >Review whitelist guidelines</a>
+        </p>
+      </div>
+    );
+  }
+
+  if (isWhitelisted && !isPubsale) {
+    if (presaleEnded) {
+      if (presaleSoldOut) {
+        return (
+          <div className="mint-area">
+            <p className="my-3">The Presale mint has been sold out. Come back on March 30, 2022 at 10am ET to buy NFT's during the Public mint.</p>
+            <div className="action-area mt-3">
+              <div className="action-button">
+                <Button disabled>Mint NFT's</Button>
+              </div>
+            </div>
+          </div>
+        );
+      } else {
+        return (
+          <div className="mint-area">
+            <p className="my-3">The Presale mint is now over. Come back on March 30, 2022 at 10am ET to buy NFT's during the Public mint.</p>
+            <div className="action-area mt-3">
+              <div className="action-button">
+                <Button disabled>Mint NFT's</Button>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    }
+  }
+
+  return (
+    <div className="mint-area">
+      <>
+        <p>Choose how many NFT's you'd like to buy. You can buy between 1 and 5 NFT's per mint.</p>
+
+        { isWhitelisted && (
+          <p className="my-3">
+            <span>Congratulations! You are whitelisted.</span>
+          </p>
+        )}
+        <div className="quantity-input-area">
+          <span>Price per NFT: { unitPrice }ETH</span>
+          <span className="separator">&times;</span>
+          <Dropdown id="quantity-selector">
+            <Dropdown.Toggle>
+              <span>{ quantity === 0 ? <>&nbsp;</> : quantity }</span>
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item as="div" onClick={() => onQuantityChanged(5)}>5</Dropdown.Item>
+              <Dropdown.Item as="div" onClick={() => onQuantityChanged(4)}>4</Dropdown.Item>
+              <Dropdown.Item as="div" onClick={() => onQuantityChanged(3)}>3</Dropdown.Item>
+              <Dropdown.Item as="div" onClick={() => onQuantityChanged(2)}>2</Dropdown.Item>
+              <Dropdown.Item as="div" onClick={() => onQuantityChanged(1)}>1</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <span className="separator">=</span>
+          <span className={`${insufficient ? 'insufficient' : ''}`}>{ unitPrice * quantity }ETH</span>
+        </div>
+        <div className="action-area mt-3">
+          <div className="action-button">
+            <Button disabled={processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
+          </div>
+        </div>
+      </>
     </div>
   )
 }
