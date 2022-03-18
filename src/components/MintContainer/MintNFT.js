@@ -221,7 +221,7 @@ export default function MintNFT() {
       <>
         <p>Choose how many NFT's you'd like to buy. You can buy between 1 and 5 NFT's per mint.</p>
 
-        { isWhitelisted && (
+        { isWhitelisted && !presaleEnded && (
           <p className="my-3">
             <span>Congratulations! You are whitelisted.</span>
           </p>
