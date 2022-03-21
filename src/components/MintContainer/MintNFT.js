@@ -174,15 +174,11 @@ export default function MintNFT() {
       <div className="mint-area">
         <div className="action-area mt-3">
           <div className="action-button">
-            <Button disabled>Mint NFT's</Button>
+            <Button disabled>Buy NFT's</Button>
           </div>
         </div>
         <p className="mt-3">
-          <a
-            href="https://zensports.com/blog/zensportsia-nft-drop-how-to-enter-the-whitelist/"
-            target="_blank"
-            class="sub-text"
-          >Review whitelist guidelines</a>
+          The NFT Presale is only open to those whitelisted Ethereum addresses that were approved prior to March 24, 2022 at 11:59pm Eastern Time. You can check <u className="link" onClick={() => window.open('https://docs.google.com/spreadsheets/d/1Bctpq05jMSLviggf_6E36Qqo8calVyUs9HuUwL3c-h0/edit#gid=0')}>HERE</u> to see if your Ethereum wallet address is on the whitelist. If it's not, you'll need to wait until the Public Sale begins on March 30, 2022 at 10:00am Eastern Time to mint a ZenSportsian NFT.
         </p>
       </div>
     );
