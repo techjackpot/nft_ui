@@ -2,7 +2,7 @@ import { useWeb3React } from '@web3-react/core';
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Dropdown } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { ethers } from 'ethers';
+import { ethers, BigNumber } from 'ethers';
 import Balance from '../Balance';
 import ContractABI from '../../abis/rinkeby.json';
 import { CONTRACT_ADDRESS } from '../../constants/addresses';
@@ -23,6 +23,8 @@ export default function MintNFT() {
   const [processing, setProcessing] = useState(false);
   const [isPresale, setIsPresale] = useState(false);
   const [isPubsale, setIsPubsale] = useState(false);
+  const [presaleAllocationCount, setPresaleAllocationCount] = useState(0);
+  const [teamAllocationCount, setTeamAllocationCount] = useState(0);
   const [presaleCount, setPresaleCount] = useState(0);
   const [presaleSoldOut, setPresaleSoldOut] = useState(false);
   const [pubsaleCount, setPubsaleCount] = useState(0);
@@ -61,6 +63,9 @@ export default function MintNFT() {
       setPresalePrice(parseFloat(ethers.utils.formatEther(salePlans.mintPrice1)));
       setPubsalePrice(parseFloat(ethers.utils.formatEther(salePlans.mintPrice2)));
 
+      setPresaleAllocationCount(salePlans.presaleAllocation.toNumber());
+      setTeamAllocationCount(salePlans.teamAllocation.toNumber());
+
       setLoaded(true);
     })()
   }, [account, library]);
@@ -70,12 +75,12 @@ export default function MintNFT() {
   }, [presaleStartDate]);
 
   useEffect(() => {
-    setPresaleSoldOut(presaleCount >= 5000);
-  }, [presaleCount]);
+    setPresaleSoldOut(presaleCount >= presaleAllocationCount);
+  }, [presaleCount, presaleAllocationCount]);
 
   useEffect(() => {
-    setSoldOut(presaleCount + pubsaleCount >= 9800);
-  }, [presaleCount, pubsaleCount]);
+    setSoldOut(presaleCount + pubsaleCount >= 10000 - teamAllocationCount);
+  }, [presaleCount, pubsaleCount, teamAllocationCount]);
 
   useEffect(() => {
     setPresaleEnded(!isPresale || presaleSoldOut);
