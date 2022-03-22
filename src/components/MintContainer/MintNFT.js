@@ -35,6 +35,8 @@ export default function MintNFT() {
   const [presalePrice, setPresalePrice] = useState(0);
   const [pubsalePrice, setPubsalePrice] = useState(0);
 
+  const [forceReload, setForceReload] = useState(0);
+
   useEffect(() => {
     (async () => {
       const provider = new ethers.providers.Web3Provider(library.provider);
@@ -68,7 +70,7 @@ export default function MintNFT() {
 
       setLoaded(true);
     })()
-  }, [account, library]);
+  }, [account, library, forceReload]);
 
   useEffect(() => {
     setPresaleStarted(new Date() >= presaleStartDate);
@@ -134,13 +136,14 @@ export default function MintNFT() {
       toast.error(e.message);
     } finally {
       setProcessing(false);
+      setForceReload(forceReload + 1);
     }
   };
 
   if (!loaded) {
     return (
       <div className="mint-area">
-        <div className="action-area mt-3">
+        <div className="action-area">
           <div className="action-button">
             <Button disabled>Loading...</Button>
           </div>
@@ -152,7 +155,7 @@ export default function MintNFT() {
   if (!presaleStarted) {
     return (
       <div className="mint-area">
-        <div className="action-area mt-3">
+        <div className="action-area">
           <div className="action-button">
             <Button disabled>Mint NFT's</Button>
           </div>
@@ -164,12 +167,12 @@ export default function MintNFT() {
   if (soldOut) {
     return (
       <div className="mint-area">
-        <p className="my-3">The Public mint has been sold out. Feel free to check <u className="link" onClick={() => window.open('https://opensea.io')}>OpenSea</u> if you're interested in buying any NFT's in the public markets.</p>
-        <div className="action-area mt-3">
+        <div className="action-area mb-4">
           <div className="action-button">
             <Button disabled>Mint NFT's</Button>
           </div>
         </div>
+        <p className="mt-3 mb-0">The Public mint has been sold out.<br/>Feel free to check <u className="link" onClick={() => window.open('https://opensea.io')}>OpenSea</u> if you're interested in buying any NFT's in the public markets.</p>
       </div>
     );
   }
@@ -177,12 +180,12 @@ export default function MintNFT() {
   if (!isWhitelisted && !isPubsale) {
     return (
       <div className="mint-area">
-        <div className="action-area mt-3">
+        <div className="action-area mb-4">
           <div className="action-button">
             <Button disabled>Buy NFT's</Button>
           </div>
         </div>
-        <p className="mt-3">
+        <p className="mt-3 mb-0">
           The NFT Presale is only open to those whitelisted Ethereum addresses that were approved prior to March 24, 2022 at 11:59pm Eastern Time. You can check <u className="link" onClick={() => window.open('https://docs.google.com/spreadsheets/d/1Bctpq05jMSLviggf_6E36Qqo8calVyUs9HuUwL3c-h0/edit#gid=0')}>HERE</u> to see if your Ethereum wallet address is on the whitelist. If it's not, you'll need to wait until the Public Sale begins on March 30, 2022 at 10:00am Eastern Time to mint a ZenSportsian NFT.
         </p>
       </div>
@@ -194,23 +197,23 @@ export default function MintNFT() {
       if (presaleSoldOut) {
         return (
           <div className="mint-area">
-            <p className="my-3">The Presale mint has been sold out. Come back on March 30, 2022 at 10am ET to buy NFT's during the Public mint.</p>
-            <div className="action-area mt-3">
+            <div className="action-area mb-4">
               <div className="action-button">
                 <Button disabled>Mint NFT's</Button>
               </div>
             </div>
+            <p className="mt-3 mb-0">The Presale mint has been sold out.<br/>Come back on March 30, 2022 at 10am ET to buy NFT's during the Public mint.</p>
           </div>
         );
       } else {
         return (
           <div className="mint-area">
-            <p className="my-3">The Presale mint is now over. Come back on March 30, 2022 at 10am ET to buy NFT's during the Public mint.</p>
-            <div className="action-area mt-3">
+            <div className="action-area mb-4">
               <div className="action-button">
                 <Button disabled>Mint NFT's</Button>
               </div>
             </div>
+            <p className="mt-3 mb-0">The Presale mint is now over.<br/>Come back on March 30, 2022 at 10am ET to buy NFT's during the Public mint.</p>
           </div>
         );
       }
@@ -220,8 +223,6 @@ export default function MintNFT() {
   return (
     <div className="mint-area">
       <>
-        <p>Choose how many NFT's you'd like to buy. You can buy between 1 and 5 NFT's per mint.</p>
-
         { isWhitelisted && !presaleEnded && (
           <p className="my-3">
             <span>Congratulations! You are whitelisted.</span>
@@ -245,7 +246,8 @@ export default function MintNFT() {
           <span className="separator">=</span>
           <span className={`${insufficient ? 'insufficient' : ''}`}>{ unitPrice * quantity }ETH</span>
         </div>
-        <div className="action-area mt-3">
+        <p className="mt-2">Choose how many NFT's you'd like to buy.<br/>You can buy between 1 and 5 NFT's per mint.</p>
+        <div className="action-area">
           <div className="action-button">
             <Button disabled={processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
           </div>

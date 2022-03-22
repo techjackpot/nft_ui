@@ -34,12 +34,11 @@ code {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 24px;
   p {
-    font-size: 20px;
+    font-size: 16px;
     z-index: 3;
     font-family: "Sofia Pro", sans-serif;
-    max-width: 585px;
+    max-width: 665px;
     font-weight: 500;
     margin: 0 0 1em;
   }
@@ -181,11 +180,20 @@ nav {
 }
 
 header {
-  @media (min-width: 1021px) {
-    min-height: calc(950px + 12vw);
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 900px;
   .hero-content {
-    min-height: 800px;
+    background-size: 100% 100%;
+    padding-bottom: 7vh;
+    > p {
+      max-width: 725px;
+    }
+  }
+  .bgFootball {
+    position: absolute;
+    top: 35%;
   }
 }
 

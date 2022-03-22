@@ -92,7 +92,7 @@ export default function MintContainer() {
 
   if (isBeforeWhitelist) {
     return (
-      <div className="mint-btn">
+      <div className="mint-btn mb-3">
         <a
           href="https://wamak77h4yt.typeform.com/zensportsia"
           target="_blank"
@@ -100,14 +100,15 @@ export default function MintContainer() {
           <span>Join NFT Whitelist</span>
         </a>
         <p>
-          <span
-            ><a
+          <span>
+            <a
               href="https://zensports.com/blog/zensportsia-nft-drop-how-to-enter-the-whitelist/"
               target="_blank"
               class="sub-text"
-              >Review whitelist guidelines</a
-            ></span
-          >
+            >
+              Review whitelist guidelines
+            </a>
+          </span>
         </p>
       </div>
     );
@@ -115,9 +116,9 @@ export default function MintContainer() {
 
   if (isBeforePreSale) {
     return (
-      <div className="mint-btn">
+      <div className="mint-btn mb-4">
         <div className="mint-area">
-          <div className="action-area mt-3">
+          <div className="action-area">
             <div className="action-button">
               <Button disabled>Mint NFT's</Button>
             </div>
@@ -128,7 +129,7 @@ export default function MintContainer() {
   }
 
   return (
-    <div className="mint-btn">
+    <div className="mint-btn mb-4">
       { account ? <MintNFT /> : <OnboardingButton /> }
     </div>
   );
