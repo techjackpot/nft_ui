@@ -49,7 +49,7 @@ export default function MintContainer() {
     timerIDs.library = setTimeout(async () => {
       const provider = library ? new ethers.providers.Web3Provider(library.provider) : new ethers.providers.EtherscanProvider(NetworkContextName);
       const contract = new ethers.Contract(CONTRACT_ADDRESS, ContractABI, provider);
-      const salePlans = await contract.getSalePlans();
+      const salePlans = await contract.salePlans();
 
       const presaleStartDate = new Date(salePlans.startTime.toNumber() * 1000); // presale starts at 28th 10am ET
       const whitelistEndDate = new Date(presaleStartDate.getTime() - 1000 * 60 * 60 * 82); // whitelist ends at 82hrs before presale start - closed by 24th 11:59pm ET

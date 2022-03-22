@@ -43,7 +43,7 @@ export default function MintNFT() {
       const signer = provider.getSigner();
       const contract = new ethers.Contract(CONTRACT_ADDRESS, ContractABI, provider);
 
-      const salePlans = await contract.connect(signer).getSalePlans();
+      const salePlans = await contract.salePlans();
 
       const isWhitelisted = await contract.connect(signer).whitelists(account);
       setWhitelisted(isWhitelisted);
