@@ -1,13 +1,13 @@
 import { useWeb3React } from '@web3-react/core';
 import React, { useState, useEffect } from 'react';
-import { Form, Button, Dropdown } from 'react-bootstrap';
+import { Button, Dropdown } from 'react-bootstrap';
 import { toast } from 'react-toastify';
-import { ethers, BigNumber } from 'ethers';
+import { ethers } from 'ethers';
 import Balance from '../Balance';
 import ContractABI from '../../abis/contract.json';
 import { CONTRACT_ADDRESS } from '../../constants/addresses';
 
-const timerIDs = {};
+// const timerIDs = {};
 
 export default function MintNFT() {
   const { account, library } = useWeb3React();
