@@ -6,7 +6,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import OnboardingButton from './OnboardinButton';
 import { ethers } from 'ethers';
-import ContractABI from '../../abis/rinkeby.json';
+import ContractABI from '../../abis/contract.json';
 import { CONTRACT_ADDRESS } from '../../constants/addresses';
 import { NetworkContextName } from '../../constants/misc';
 

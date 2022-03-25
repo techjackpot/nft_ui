@@ -4,7 +4,7 @@ import { Form, Button, Dropdown } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { ethers, BigNumber } from 'ethers';
 import Balance from '../Balance';
-import ContractABI from '../../abis/rinkeby.json';
+import ContractABI from '../../abis/contract.json';
 import { CONTRACT_ADDRESS } from '../../constants/addresses';
 
 const timerIDs = {};

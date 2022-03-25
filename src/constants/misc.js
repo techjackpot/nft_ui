@@ -1,1 +1,1 @@
-export const NetworkContextName = 'rinkeby';
+export const NetworkContextName = null;
