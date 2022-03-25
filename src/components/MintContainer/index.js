@@ -69,7 +69,7 @@ export default function MintContainer() {
         setIsBeforePresale(false);
       }, presaleStartDate.getTime() - new Date().getTime());
     }
-  }, [isBeforePreSale]);
+  }, [isBeforePreSale, presaleStartDate]);
 
   useEffect(() => {
     if (isBeforeWhitelist) {
@@ -81,7 +81,7 @@ export default function MintContainer() {
         setIsBeforeWhitelist(false);
       }, whitelistEndDate.getTime() - new Date().getTime());
     }
-  }, [isBeforeWhitelist]);
+  }, [isBeforeWhitelist, whitelistEndDate]);
 
   useEffect(() => {
     setIsBeforeWhitelist(new Date() < whitelistEndDate);
