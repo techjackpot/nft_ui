@@ -162,6 +162,9 @@ nav {
         text-align: center;
       }
     }
+    > a {
+      margin-left: 4px;
+    }
   }
   #wallet-dropdown {
     border: 1px solid #00ddee;
@@ -194,6 +197,11 @@ header {
   .bgFootball {
     position: absolute;
     top: 35%;
+  }
+  .menu {
+    li {
+      margin: 0 2px;
+    }
   }
 }
 
