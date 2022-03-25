@@ -34,6 +34,7 @@ export default function MintNFT() {
   const [presaleEnded, setPresaleEnded] = useState(false);
   const [presalePrice, setPresalePrice] = useState(0);
   const [pubsalePrice, setPubsalePrice] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
 
   const [forceReload, setForceReload] = useState(0);
 
@@ -93,12 +94,16 @@ export default function MintNFT() {
   }, [isWhitelisted, presaleEnded, presalePrice, pubsalePrice]);
 
   useEffect(() => {
-    setInsufficient(quantity === 0 || unitPrice * quantity > balance);
-  }, [unitPrice, quantity, balance]);
+    setInsufficient(quantity === 0 || totalAmount > balance);
+  }, [unitPrice, quantity, balance, totalAmount]);
 
   const onQuantityChanged = (value) => {
     setQuantity(value);
   };
+
+  useEffect(() => {
+    setTotalAmount(Math.round(unitPrice * quantity * 100) / 100);
+  }, [unitPrice, quantity]);
 
   const confirmMint = async () => {
     if (insufficient) {
@@ -116,7 +121,7 @@ export default function MintNFT() {
       const signer = provider.getSigner();
       const contract = new ethers.Contract(CONTRACT_ADDRESS, ContractABI, provider);
       const mintResponse = await contract.connect(signer).mint(quantity, {
-        value: ethers.utils.parseEther(quantity * unitPrice + '')
+        value: ethers.utils.parseEther(totalAmount + '')
       })
       toast.promise(mintResponse.wait, {
         pending: {
@@ -244,7 +249,7 @@ export default function MintNFT() {
             </Dropdown.Menu>
           </Dropdown>
           <span className="separator">=</span>
-          <span className={`${insufficient ? 'insufficient' : ''}`}>{ unitPrice * quantity }ETH</span>
+          <span className={`${insufficient ? 'insufficient' : ''}`}>{ totalAmount }ETH</span>
         </div>
         <p className="mt-2">Choose how many NFT's you'd like to buy.<br/>You can buy between 1 and 5 NFT's per mint.</p>
         <div className="action-area">
