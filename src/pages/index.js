@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import HeaderInfo from '../components/HeaderInfo';
-// import MintContainer from '../components/MintContainer';
-import DisabledButton from '../components/MintContainer/DisabledButton';
+import MintContainer from '../components/MintContainer';
+// import DisabledButton from '../components/MintContainer/DisabledButton';
 
 export default function IndexPage() {
 
@@ -89,7 +89,7 @@ export default function IndexPage() {
             you’ve ever seen. Mint your own ZenSportsian NFT today to up your game
             and earn benefits in the sports and gaming world.
           </p>
-          <DisabledButton />
+          <MintContainer />
         </div>
 
         <img src="images/hero-badge.png" alt="badge" class="bgBadge" />
