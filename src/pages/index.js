@@ -201,7 +201,7 @@ export default function IndexPage() {
               <h4>Sample ZenSportsian NFT's</h4>
             </div>
             <div class="row characters">
-              <div class="col-md-4 d-flex align-items-stretch">
+              <div class="col-md-4">
                 {/* <!--<div class="icon-box">--> */}
                 <img
                   src="images/NFT_character_1-1.jpg"
@@ -210,7 +210,7 @@ export default function IndexPage() {
                 />
               </div>
 
-              <div class="col-md-4 d-flex align-items-stretch">
+              <div class="col-md-4">
                 {/* <!--<div class="icon-box">--> */}
                 <img
                   src="images/NFT_character_2-1.jpg"
@@ -219,7 +219,7 @@ export default function IndexPage() {
                 />
               </div>
 
-              <div class="col-md-4 d-flex align-items-stretch">
+              <div class="col-md-4">
                 {/* <!--<div class="icon-box">--> */}
                 <img
                   src="images/NFT_character_3-1.jpg"
@@ -229,7 +229,7 @@ export default function IndexPage() {
               </div>
             </div>
             <div class="row characters">
-              <div class="col-md-4 d-flex align-items-stretch">
+              <div class="col-md-4">
                 <img
                   src="images/NFT_character_4.jpg"
                   alt="NFT Character 4"
@@ -237,7 +237,7 @@ export default function IndexPage() {
                 />
               </div>
 
-              <div class="col-md-4 d-flex align-items-stretch">
+              <div class="col-md-4">
                 <img
                   src="images/NFT_character_5.jpg"
                   alt="NFT Character 5"
@@ -245,7 +245,7 @@ export default function IndexPage() {
                 />
               </div>
 
-              <div class="col-md-4 d-flex align-items-stretch">
+              <div class="col-md-4">
                 <img
                   src="images/NFT_character_6.jpg"
                   alt="NFT Character 6"
