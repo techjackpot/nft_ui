@@ -8,7 +8,7 @@ export default function Wallet() {
   const balance = Balance();
 
   const onDeactivate = () => {
-    localStorage.setItem('disconnectForced', '1');
+    window.localStorage.setItem('disconnectForced', '1');
     deactivate();
   };
 

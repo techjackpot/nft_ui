@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { ethers } from 'ethers';
 import Balance from '../Balance';
 import ContractABI from '../../abis/contract.json';
-import { CONTRACT_ADDRESS } from '../../constants/addresses';
+import { CONTRACT_ADDRESS } from '../../constants/vars';
 
 // const timerIDs = {};
 

@@ -1,21 +1,21 @@
 import { useWeb3React } from '@web3-react/core';
 import MetaMaskOnboarding from '@metamask/onboarding';
 import React from 'react';
-import { toast } from 'react-toastify';
 import { Button } from 'react-bootstrap';
-import { injected } from '../../connectors';
-
-const ONBOARD_TEXT = 'Mint NFT\'s'; //'Click here to install MetaMask!';
-const CONNECT_TEXT = 'Mint NFT\'s';
-const CONNECTED_TEXT = 'Disconnect';
+import SelectWalletModal from "./Modal";
+import {
+  setConnector,
+  getConnector,
+  activateInjectedProvider,
+  getSelectedConnector,
+} from '../../connectors';
 
 export default function OnboardingButton(props) {
   const context = useWeb3React()
 
-  const { connector, active, account, activate, deactivate } = context;
+  const { connector, active, account, activate } = context;
 
-  const [buttonText, setButtonText] = React.useState(ONBOARD_TEXT);
-  const [isDisabled, setDisabled] = React.useState(false);
+  const [modalShow, setModalShow] = React.useState(false);
 
   const onboarding = React.useRef();
 
@@ -28,36 +28,33 @@ export default function OnboardingButton(props) {
   React.useEffect(() => {
     if (MetaMaskOnboarding.isMetaMaskInstalled()) {
       if (account) {
-        setButtonText(CONNECTED_TEXT);
-        setDisabled(false);
         onboarding.current.stopOnboarding();
-      } else {
-        setButtonText(CONNECT_TEXT);
-        setDisabled(false);
       }
     }
   }, [connector, active, account]);
 
-  const onClick = () => {
-    if (MetaMaskOnboarding.isMetaMaskInstalled()) {
-      if (account) {
-        deactivate();
-      } else {
-        activate(injected).then(() => {
-          localStorage.removeItem('disconnectForced');
-          // toast.success('Connected');
-        });
+  const onConnectorSelected = (connectorName) => {
+    setConnector(connectorName);
+    if (connectorName === 'injected') {
+      if (!MetaMaskOnboarding.isMetaMaskInstalled()) {
+        onboarding.current.startOnboarding();
       }
-    } else {
-      onboarding.current.startOnboarding();
     }
+    activateInjectedProvider(getConnector());
+    activate(getSelectedConnector());
+    setModalShow(false)
   };
 
   return (
     <div className="action-button">
-      <Button disabled={isDisabled} onClick={onClick}>
-        {buttonText}
+      <Button onClick={() => setModalShow(true)}>
+        Mint NFT's
       </Button>
+      <SelectWalletModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+        onSelect={(connectorName) => onConnectorSelected(connectorName)}
+      />
     </div>
   );
 }

@@ -1,14 +1,19 @@
 import { toast } from 'react-toastify';
 import { useWeb3React } from '@web3-react/core';
 import MintNFT from './MintNFT';
+import {
+  NoEthereumProviderError,
+} from '@web3-react/injected-connector'
 import { useEagerConnect, useInactiveListener } from '../../hooks';
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import OnboardingButton from './OnboardinButton';
 import { ethers } from 'ethers';
 import ContractABI from '../../abis/contract.json';
-import { CONTRACT_ADDRESS } from '../../constants/addresses';
-import { NetworkContextName } from '../../constants/misc';
+import {
+  CONTRACT_ADDRESS,
+  NetworkContextName,
+} from '../../constants/vars';
 
 const timerIDs = {};
 
@@ -30,8 +35,11 @@ export default function MintContainer() {
 
   useEffect(() => {
     if (error) {
-      // console.log(error);
-      toast.error(error.message);
+      if (error instanceof NoEthereumProviderError) {
+        // console.log(error);
+      } else {
+        toast.error(error.message);
+      }
     }
   }, [error])
 
@@ -96,6 +104,7 @@ export default function MintContainer() {
         <a
           href="https://wamak77h4yt.typeform.com/zensportsia"
           target="_blank"
+          rel="noreferrer"
         >
           <span>Join NFT Whitelist</span>
         </a>
@@ -105,6 +114,7 @@ export default function MintContainer() {
               href="https://zensports.com/blog/zensportsia-nft-drop-how-to-enter-the-whitelist/"
               target="_blank"
               class="sub-text"
+              rel="noreferrer"
             >
               Review whitelist guidelines
             </a>
