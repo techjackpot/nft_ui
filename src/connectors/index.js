@@ -1,6 +1,6 @@
 import { InjectedConnector } from '@web3-react/injected-connector';
 import { WalletLinkConnector } from "@web3-react/walletlink-connector";
-import { ZENSPORTSIA_WEB3_URL, supportedChainIds } from '../constants/vars';
+import { ZENSPORTSIA_WEB3_URL, ZENSPORTSIA_APP_NAME, supportedChainIds } from '../constants/vars';
 
 export const injected = new InjectedConnector({
   supportedChainIds,
@@ -8,7 +8,7 @@ export const injected = new InjectedConnector({
 
 export const coinbaseWallet = new WalletLinkConnector({
   url: ZENSPORTSIA_WEB3_URL,
-  appName: 'ZenSportsia',
+  appName: ZENSPORTSIA_APP_NAME,
   supportedChainIds,
 });
 
