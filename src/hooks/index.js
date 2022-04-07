@@ -1,7 +1,11 @@
-import { useState, useEffect } from 'react'
-import { useWeb3React } from '@web3-react/core'
+import { useState, useEffect } from 'react';
+import { useWeb3React } from '@web3-react/core';
 
-import { injected } from '../connectors'
+import {
+  getConnector,
+  activateInjectedProvider,
+  getSelectedConnector,
+} from '../connectors';
 
 export function useEagerConnect() {
   const { activate, active } = useWeb3React()
@@ -9,17 +13,30 @@ export function useEagerConnect() {
   const [tried, setTried] = useState(false)
 
   useEffect(() => {
-    const disconnectForced = localStorage.getItem('disconnectForced');
-    injected.isAuthorized().then((isAuthorized) => {
-      if (isAuthorized && disconnectForced !== '1') {
-        activate(injected, undefined, true).catch(() => {
-          setTried(true)
-        })
-      } else {
-        setTried(true)
+    const disconnectForced = window.localStorage.getItem('disconnectForced');
+
+    if (disconnectForced === '1') {
+      setTried(true)
+    } else {
+      if (activateInjectedProvider(getConnector())) {
+        if (getConnector() === 'coinbaseWallet') {
+          activate(getSelectedConnector(), undefined, true).catch(() => {
+            setTried(true)
+          })
+        } else {
+          getSelectedConnector().isAuthorized().then((isAuthorized) => {
+            if (isAuthorized) {
+              activate(getSelectedConnector(), undefined, true).catch(() => {
+                setTried(true)
+              })
+            } else {
+              setTried(true)
+            }
+          })
+        }
       }
-    })
-  }, [activate]) // intentionally only running on mount (make sure it's only mounted once :))
+    }
+  }, []) // intentionally only running on mount (make sure it's only mounted once :))
 
   // if the connection worked, wait until we get confirmation of that to flip the flag
   useEffect(() => {
@@ -39,21 +56,21 @@ export function useInactiveListener(suppress = false) {
     if (ethereum && ethereum.on && !active && !error && !suppress) {
       const handleConnect = () => {
         // console.log("Handling 'connect' event")
-        activate(injected)
+        activate(getSelectedConnector())
       }
       const handleChainChanged = (chainId) => {
         // console.log("Handling 'chainChanged' event with payload", chainId)
-        activate(injected)
+        activate(getSelectedConnector())
       }
       const handleAccountsChanged = (accounts) => {
         // console.log("Handling 'accountsChanged' event with payload", accounts)
         if (accounts.length > 0) {
-          activate(injected)
+          activate(getSelectedConnector())
         }
       }
       const handleNetworkChanged = (networkId) => {
         // console.log("Handling 'networkChanged' event with payload", networkId)
-        activate(injected)
+        activate(getSelectedConnector())
       }
 
       ethereum.on('connect', handleConnect)
