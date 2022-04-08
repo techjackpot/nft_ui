@@ -234,9 +234,8 @@ export default function MintNFT() {
           </p>
         )}
         <div className="quantity-input-area">
-          <span>Price per NFT: { unitPrice }ETH</span>
-          <span className="separator">&times;</span>
-          <Dropdown id="quantity-selector">
+          <span className="separator">Number of NTF's</span>
+          <Dropdown id="quantity-selector" className="separator">
             <Dropdown.Toggle>
               <span>{ quantity === 0 ? <>&nbsp;</> : quantity }</span>
             </Dropdown.Toggle>
@@ -248,6 +247,8 @@ export default function MintNFT() {
               <Dropdown.Item as="div" onClick={() => onQuantityChanged(1)}>1</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+          <span className="separator">&times;</span>
+          <span>{ unitPrice }ETH</span>
           <span className="separator">=</span>
           <span className={`${insufficient ? 'insufficient' : ''}`}>{ totalAmount }ETH</span>
         </div>
