@@ -234,9 +234,8 @@ export default function MintNFT() {
           </p>
         )}
         <div className="quantity-input-area">
-          <span>Price per NFT: { unitPrice }ETH</span>
-          <span className="separator">&times;</span>
-          <Dropdown id="quantity-selector">
+          <span className="separator">Number of NTF's</span>
+          <Dropdown id="quantity-selector" className="separator">
             <Dropdown.Toggle>
               <span>{ quantity === 0 ? <>&nbsp;</> : quantity }</span>
             </Dropdown.Toggle>
@@ -248,14 +247,17 @@ export default function MintNFT() {
               <Dropdown.Item as="div" onClick={() => onQuantityChanged(1)}>1</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
+          <span className="separator">&times;</span>
+          <span>{ unitPrice }ETH</span>
           <span className="separator">=</span>
           <span className={`${insufficient ? 'insufficient' : ''}`}>{ totalAmount }ETH</span>
         </div>
-        <p className="mt-2">Choose how many NFT's you'd like to buy.<br/>You can buy between 1 and 5 NFT's per mint.</p>
+        {/* <p className="mt-2">Choose how many NFT's you'd like to buy.<br/>You can buy between 1 and 5 NFT's per mint.</p> */}
         <div className="action-area">
-          <div className="action-button">
+          <div className="action-button mt-4 mb-2">
             <Button disabled={processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
           </div>
+          <u className="link" onClick={() => window.open('https://wamak77h4yt.typeform.com/zsnft-referral')}>Have a referral code?</u>
         </div>
       </>
     </div>
