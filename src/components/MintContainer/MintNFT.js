@@ -254,7 +254,7 @@ export default function MintNFT() {
         </div>
         {/* <p className="mt-2">Choose how many NFT's you'd like to buy.<br/>You can buy between 1 and 5 NFT's per mint.</p> */}
         <div className="action-area mt-4">
-          <u className="link" onClick={() => window.open('https://wamak77h4yt.typeform.com/zsnft-referral')}>Have a referral code? (Submit this form before you buy an NFT)</u>
+          <u className="link" onClick={() => window.open('https://wamak77h4yt.typeform.com/zsnft-referral')}>Have a referral code? Click here to submit a referral code before you buy an NFT</u>
           <div className="action-button mt-4">
             <Button disabled={processing} onClick={confirmMint}>{ !processing ? 'Buy NFT\'s' : 'Confirming...' }</Button>
           </div>
