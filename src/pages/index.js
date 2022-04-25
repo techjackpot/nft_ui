@@ -80,7 +80,7 @@ export default function IndexPage() {
       <header>
         <nav>
           <div class="nav-brand">
-            <a href="/">
+            <a href="/zensportsia">
               <img
                 src="/resources/images/ZenSportsia_logo.png"
                 alt="Zensportsia Logo"
