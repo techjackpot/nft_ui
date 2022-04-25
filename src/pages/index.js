@@ -82,7 +82,7 @@ export default function IndexPage() {
           <div class="nav-brand">
             <a href="/">
               <img
-                src="images/ZenSportsia_logo.png"
+                src="/resources/images/ZenSportsia_logo.png"
                 alt="Zensportsia Logo"
                 class="toggler-btn"
               />
@@ -130,8 +130,8 @@ export default function IndexPage() {
           <MintContainer />
         </div>
 
-        <img src="images/hero-badge.png" alt="badge" class="bgBadge" />
-        <img src="images/hero-football.png" alt="football" class="bgFootball" />
+        <img src="/resources/images/hero-badge.png" alt="badge" class="bgBadge" />
+        <img src="/resources/images/hero-football.png" alt="football" class="bgFootball" />
       </header>
 
       <section id="Story" class="services">
@@ -190,7 +190,7 @@ export default function IndexPage() {
         </div>
 
         <img
-          src="images/sec1-soccer.png"
+          src="/resources/images/sec1-soccer.png"
           alt="soccer"
           class="bgSoccer"
           loading="lazy"
@@ -204,7 +204,7 @@ export default function IndexPage() {
               <div class="col-md-4">
                 {/* <!--<div class="icon-box">--> */}
                 <img
-                  src="images/NFT_character_1-1.jpg"
+                  src="/resources/images/NFT_character_1-1.jpg"
                   alt="NFT Character 1"
                   class="img-nft"
                 />
@@ -213,7 +213,7 @@ export default function IndexPage() {
               <div class="col-md-4">
                 {/* <!--<div class="icon-box">--> */}
                 <img
-                  src="images/NFT_character_2-1.jpg"
+                  src="/resources/images/NFT_character_2-1.jpg"
                   alt="NFT Character 2"
                   class="img-nft"
                 />
@@ -222,7 +222,7 @@ export default function IndexPage() {
               <div class="col-md-4">
                 {/* <!--<div class="icon-box">--> */}
                 <img
-                  src="images/NFT_character_3-1.jpg"
+                  src="/resources/images/NFT_character_3-1.jpg"
                   alt="NFT Character 3"
                   class="img-nft"
                 />
@@ -231,7 +231,7 @@ export default function IndexPage() {
             <div class="row characters">
               <div class="col-md-4">
                 <img
-                  src="images/NFT_character_4.jpg"
+                  src="/resources/images/NFT_character_4.jpg"
                   alt="NFT Character 4"
                   class="img-nft"
                 />
@@ -239,7 +239,7 @@ export default function IndexPage() {
 
               <div class="col-md-4">
                 <img
-                  src="images/NFT_character_5.jpg"
+                  src="/resources/images/NFT_character_5.jpg"
                   alt="NFT Character 5"
                   class="img-nft"
                 />
@@ -247,7 +247,7 @@ export default function IndexPage() {
 
               <div class="col-md-4">
                 <img
-                  src="images/NFT_character_6.jpg"
+                  src="/resources/images/NFT_character_6.jpg"
                   alt="NFT Character 6"
                   class="img-nft"
                 />
@@ -319,7 +319,7 @@ export default function IndexPage() {
           </div>
         </div>
         <img
-          src="images/sec3-badges.png"
+          src="/resources/images/sec3-badges.png"
           alt="badges"
           class="badgesImg"
           loading="lazy"
@@ -409,7 +409,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/MarkT_Avatar1-2.png"
+                            src="/resources/images/MarkT_Avatar1-2.png"
                             alt="Mark Thomas"
                           />
                         </div>
@@ -418,7 +418,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/entrepreneursf/"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Mark Thomas</h4>
@@ -427,7 +427,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/Jacob_Avatar1-2.png"
+                            src="/resources/images/Jacob_Avatar1-2.png"
                             alt="Jacob Shrader"
                           />
                         </div>
@@ -436,7 +436,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/jacob-shrader-b172a5171/"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Jacob Shrader</h4>
@@ -445,14 +445,14 @@ export default function IndexPage() {
 
                       <li class="splide__slide">
                         <div class="team-circle">
-                          <img src="images/John_Avatar1.png" alt="John Dulay" />
+                          <img src="/resources/images/John_Avatar1.png" alt="John Dulay" />
                         </div>
                         <div class="social">
                           <a
                             target="_blank"
                             href="https://www.linkedin.com/in/jidulay"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>John Dulay</h4>
@@ -462,7 +462,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/MarkS_Avatar1-2.png"
+                            src="/resources/images/MarkS_Avatar1-2.png"
                             alt="Mark Saldana"
                             loading="lazy"
                           />
@@ -472,7 +472,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/markjsaldana"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Mark Saldana</h4>
@@ -481,7 +481,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/Ken_Avatar1-2.png"
+                            src="/resources/images/Ken_Avatar1-2.png"
                             alt="Ken Ore"
                             loading="lazy"
                           />
@@ -491,7 +491,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/ken-ore/"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Ken Ore</h4>
@@ -501,7 +501,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/Enmanuel_Avatar1.png"
+                            src="/resources/images/Enmanuel_Avatar1.png"
                             alt="Enmanuel Carcamo"
                             loading="lazy"
                           />
@@ -511,7 +511,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/enmanuel-carcamo-b696b3177/"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Enmanuel Carcamo</h4>
@@ -521,7 +521,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/Ryan_Avatar1.png"
+                            src="/resources/images/Ryan_Avatar1.png"
                             alt="Ryan Hebert"
                             loading="lazy"
                           />
@@ -531,7 +531,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/ryan-b-hebert-36768a135/"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Ryan Hebert</h4>
@@ -541,7 +541,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/Jesus_Avatar1.png"
+                            src="/resources/images/Jesus_Avatar1.png"
                             alt="Jesus Salazar"
                             loading="lazy"
                           />
@@ -551,7 +551,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/jsalazar2010/"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Jesus Salazar</h4>
@@ -560,7 +560,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/Gigi_Avatar1.png"
+                            src="/resources/images/Gigi_Avatar1.png"
                             alt="Gigi Chang"
                             loading="lazy"
                           />
@@ -570,7 +570,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/gigi-chang-14585559"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Gigi Chang</h4>
@@ -580,7 +580,7 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="images/Ally_Avatar1.png"
+                            src="/resources/images/Ally_Avatar1.png"
                             alt="Ally Mielnicki"
                             loading="lazy"
                           />
@@ -590,7 +590,7 @@ export default function IndexPage() {
                             target="_blank"
                             href="https://www.linkedin.com/in/allymielnicki"
                           >
-                            <img alt="LinkedIn" src="images/linkedin.png" />
+                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
                           </a>
                         </div>
                         <h4>Ally Mielnicki</h4>
@@ -621,14 +621,14 @@ export default function IndexPage() {
         </div>
         <div class="roadmap-desktop">
           <img
-            src="images/Roadmap-1x-2.png"
+            src="/resources/images/Roadmap-1x-2.png"
             alt="Zensportsia Roadmap"
             class="roadmap-img"
           />
         </div>
         <div class="roadmap-mobile">
           <img
-            src="images/Roadmap_1x-2_mobile.png"
+            src="/resources/images/Roadmap_1x-2_mobile.png"
             alt="Zensportsia Roadmap"
             class="roadmap-img"
           />
@@ -637,13 +637,13 @@ export default function IndexPage() {
 
       <section id="Minting" class="minting">
         <img
-          src="images/coin-left.png"
+          src="/resources/images/coin-left.png"
           alt="coin-left"
           class="coin-left"
           loading="lazy"
         />
         <img
-          src="images/coin-right.png"
+          src="/resources/images/coin-right.png"
           alt="coin-right"
           class="coin-right"
           loading="lazy"
@@ -814,7 +814,7 @@ export default function IndexPage() {
                 title="Discord"
               >
                 <img
-                  src="images/discord_icon.png"
+                  src="/resources/images/discord_icon.png"
                   alt="twitter"
                   class="toggler-btn"
                 />
@@ -825,7 +825,7 @@ export default function IndexPage() {
                 title="Twitter"
               >
                 <img
-                  src="images/twitter_icon.png"
+                  src="/resources/images/twitter_icon.png"
                   alt="twitter"
                   class="toggler-btn"
                 />

@@ -13,7 +13,7 @@ export default function HeaderInfo() {
         rel="noreferrer"
       >
         <img
-          src="images/discord_icon.png"
+          src="/resources/images/discord_icon.png"
           alt="twitter"
           className="toggler-btn"
         />
@@ -25,7 +25,7 @@ export default function HeaderInfo() {
         rel="noreferrer"
       >
         <img
-          src="images/twitter_icon.png"
+          src="/resources/images/twitter_icon.png"
           alt="twitter"
           className="toggler-btn"
         />
