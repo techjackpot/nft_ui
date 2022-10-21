@@ -100,7 +100,6 @@ export default function IndexPage() {
               <li><a href="#Benefits" class="menu-link">Benefits</a></li>
 
               <li><a href="#Team" class="menu-link">Team</a></li>
-              <li><a href="#Roadmap" class="menu-link">Roadmap</a></li>
 
               <li><a href="#Minting" class="menu-link">Minting</a></li>
 
@@ -611,27 +610,6 @@ export default function IndexPage() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section id="Roadmap" class="roadmap">
-        <div class="storyHead">
-          <p><span>Zensports & Zensportsia Roadmap</span></p>
-          <h4>Roadmap</h4>
-        </div>
-        <div class="roadmap-desktop">
-          <img
-            src="/resources/images/Roadmap-1x-2.png"
-            alt="Zensportsia Roadmap"
-            class="roadmap-img"
-          />
-        </div>
-        <div class="roadmap-mobile">
-          <img
-            src="/resources/images/Roadmap_1x-2_mobile.png"
-            alt="Zensportsia Roadmap"
-            class="roadmap-img"
-          />
         </div>
       </section>
 
