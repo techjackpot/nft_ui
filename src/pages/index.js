@@ -424,25 +424,6 @@ export default function IndexPage() {
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
-                            src="/resources/images/MarkS_Avatar1-2.png"
-                            alt="Mark Saldana"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div class="social">
-                          <a
-                            target="_blank"
-                            href="https://www.linkedin.com/in/markjsaldana"
-                          >
-                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
-                          </a>
-                        </div>
-                        <h4>Mark Saldana</h4>
-                        <span>NFT Newb</span>
-                      </li>
-                      <li class="splide__slide">
-                        <div class="team-circle">
-                          <img
                             src="/resources/images/Ken_Avatar1-2.png"
                             alt="Ken Ore"
                             loading="lazy"
@@ -500,25 +481,6 @@ export default function IndexPage() {
                         <span>The Wizard</span>
                       </li>
 
-                      <li class="splide__slide">
-                        <div class="team-circle">
-                          <img
-                            src="/resources/images/Jesus_Avatar1.png"
-                            alt="Jesus Salazar"
-                            loading="lazy"
-                          />
-                        </div>
-                        <div class="social">
-                          <a
-                            target="_blank"
-                            href="https://www.linkedin.com/in/jsalazar2010/"
-                          >
-                            <img alt="LinkedIn" src="/resources/images/linkedin.png" />
-                          </a>
-                        </div>
-                        <h4>Jesus Salazar</h4>
-                        <span>The Frontend Guru</span>
-                      </li>
                       <li class="splide__slide">
                         <div class="team-circle">
                           <img
