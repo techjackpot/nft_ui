@@ -571,6 +571,18 @@ img.bgSoccer {
   background-position: 0 0;
   background-repeat: no-repeat; */
 }
+.benefits .text-coming-soon {
+  font-style: normal;
+  font-family: "Sofia Pro Bold";
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.153846px;
+  text-transform: uppercase;
+  color: white;
+  display: block;
+  margin: 2em 0;
+  text-align: center;
+}
 .services h4,
 .how_it_works h4,
 .roadmap h4,

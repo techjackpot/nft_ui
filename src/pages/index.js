@@ -276,44 +276,7 @@ export default function IndexPage() {
             <div class="col-md-12 benefits" id="Benefits">
               <p><span>Your Benefits</span></p>
               <h4>ZenSportsian NFT Benefits</h4>
-              <ol>
-                <li>
-                  Monthly prize drawings for luxurious in-person sporting events.
-                  For example, win an all-expense paid trip for two to watch the
-                  Superbowl or the World Cup in person.
-                </li>
-                <li>
-                  Esports tournament benefits, including monthly invite-only
-                  tournaments, reduced entry fees, mulligan cards, side
-                  tournaments, and even special rule sets.
-                </li>
-                <li>
-                  Annual Esports Tournament Championship Series with significant
-                  prize money added.
-                </li>
-                <li>
-                  Access to exclusive Discord channel with NFT and cryptocurrency
-                  giveaways.
-                </li>
-                <li>
-                  Discount fees and increased rewards across the ZenSports betting
-                  app and cryptocurrency trading exchange.
-                </li>
-                <li>
-                  Exclusive in-person networking events across the globe. For
-                  example, World Cup watch parties with food and beverage
-                  provided, etc.
-                </li>
-                <li>
-                  Automatic highest-tier status at all in-person ZenSports
-                  locations and casinos (currently Big Wheel Casino in Nevada, but
-                  more locations to come soon).
-                </li>
-                <li>
-                  Access to the ZenSportsia online membership portal with
-                  additional sports and gaming perks, discounts, and rewards.
-                </li>
-              </ol>
+              <p class="text-coming-soon">Coming soon...</p>
             </div>
           </div>
         </div>
