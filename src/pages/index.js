@@ -82,9 +82,9 @@ export default function IndexPage() {
           <div class="nav-brand">
             <a href="/zensportsia">
               <img
-                src="/resources/images/ZenSportsia_logo.png"
+                src="/resources/images/zensportsia-logo-branded.svg"
                 alt="Zensportsia Logo"
-                class="toggler-btn"
+                class="toggler-btn img-logo"
               />
             </a>
           </div>
