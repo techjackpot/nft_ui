@@ -171,19 +171,6 @@ export default function IndexPage() {
                 <p>Become a part of the future of esports and gaming.</p>
                 <p><span>Welcome to ZenSportsia!</span></p>
               </div>
-              <div class="col-md-6">
-                <div class="video-frame">
-                  <iframe
-                    src="https://www.youtube.com/embed/kldYh6p6v8Q"
-                    class="o-video lazyload"
-                    frameborder="0"
-                    title="Welcome to Zensportsia!"
-                    allow="autoplay; encrypted-media"
-                    allowfullscreen
-                  >
-                  </iframe>
-                </div>
-              </div>
             </div>
           </div>
         </div>
